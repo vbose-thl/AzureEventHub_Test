@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="AzureEventHubTest" t="IncludeRecursive">
+        <e p="appsettings.json" t="Include" />
+        <e p="AzureEventHubTest.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Consumer" t="Include">
+          <e p="EventHubConsumer.cs" t="Include" />
+          <e p="EventProcessor" t="Include">
+            <e p="SimpleEventProcessor.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Helpers" t="Include">
+          <e p="ConfigHelper.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="AzureEventHubTest.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Producer" t="Include">
+          <e p="EventHubProducer.cs" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+      </e>
+      <e p="AzureEventHubTest.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_AzureEventHubTest.-671374201.00" t="ExcludeRecursive" />
+  </component>
+</project>

@@ -1,0 +1,45 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/Users/vijayendrabose/Documents/Projects/Git/AzureEventHubTest/AzureEventHubTest/AzureEventHubTest.csproj",
+    "projectName": "AzureEventHubTest",
+    "projectPath": "/Users/vijayendrabose/Documents/Projects/Git/AzureEventHubTest/AzureEventHubTest/AzureEventHubTest.csproj",
+    "outputPath": "/Users/vijayendrabose/Documents/Projects/Git/AzureEventHubTest/AzureEventHubTest/obj/",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {}
+      }
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "target": "Package",
+          "version": "2.0.0"
+        },
+        "Microsoft.Azure.EventHubs": {
+          "target": "Package",
+          "version": "1.0.3"
+        },
+        "Microsoft.Azure.EventHubs.Processor": {
+          "target": "Package",
+          "version": "1.0.3"
+        },
+        "Microsoft.Extensions.Configuration.Json": {
+          "target": "Package",
+          "version": "2.0.0"
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}
