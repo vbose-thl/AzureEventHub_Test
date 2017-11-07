@@ -8,34 +8,49 @@ namespace AzureEventHubTest
     {
         static void Main(string[] args)
         {
+            try
+            {
 
-            Console.WriteLine("Starting Producer");
+                Console.WriteLine("Starting Producer");
 
-            var producer = new EventHubProducer();
-            
-            Console.WriteLine("Sending Message");
+                var producer = new EventHubProducer();
 
-            producer.SendMessage("Test Message").GetAwaiter().GetResult();
+                Console.WriteLine("Sending Message");
 
-            Console.WriteLine("Stopping Producer");
-            
-            producer.ShutdownSender();
-            
-            Console.WriteLine("Press any key to receive message ..");
+                producer.SendMessage("Test Message").GetAwaiter().GetResult();
 
-            Console.Read();
+                Console.WriteLine("Stopping Producer");
 
-            var consumer = new EventHubConsumer();
+                producer.ShutdownSender();
 
-            Console.WriteLine("Starting Consumer");
+                Console.WriteLine("Press any key to receive message ..");
 
-            consumer.Start().GetAwaiter().GetResult();
-            
-            Console.WriteLine("Stopping Consumer");
+                Console.ReadLine();
+                Console.Read();
 
-            consumer.Stop().GetAwaiter().GetResult();
+                var consumer = new EventHubConsumer();
 
-            Console.Read();
+                Console.WriteLine("Starting Consumer");
+
+                consumer.Start();
+
+
+                Console.WriteLine("Press any key to stop receiving message ..");
+                
+                Console.ReadLine();
+                Console.Read();
+
+                Console.WriteLine("Stopping Consumer");
+                
+                consumer.Stop();
+
+                Console.ReadLine();
+                Console.Clear();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Exception {e.StackTrace}");
+            }
 
         }
     }

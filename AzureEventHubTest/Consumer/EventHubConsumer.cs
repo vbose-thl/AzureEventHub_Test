@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AzureEventHubTest.Consumer.EventProcessor;
 using AzureEventHubTest.Helpers;
 using Microsoft.Azure.EventHubs;
@@ -22,7 +23,7 @@ namespace AzureEventHubTest.Consumer
         {
             StorageContainerName = ConfigHelper.Configuration["StorageContainerName"];
             StorageConnectionString = ConfigHelper.Configuration["StorageConnectionString"];
-            EhConnectionString = ConfigHelper.Configuration["EhConnectionString"];
+            EhConnectionString = ConfigHelper.Configuration["Eh_Listen_ConnectionString"];
             EhEntityPath = ConfigHelper.Configuration["EhEntityPath"];
 
             _eventProcessorHost = CreateEventProcessor();
@@ -36,29 +37,35 @@ namespace AzureEventHubTest.Consumer
                 EhConnectionString,
                 StorageConnectionString,
                 StorageContainerName);
-
+            
             return eventProcessorHost;
         }
 
-        private async Task StartEventProcessor(EventProcessorHost eventProcessorHost)
+        private void StartEventProcessor(EventProcessorHost eventProcessorHost)
         {
-            await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
+            var options = new EventProcessorOptions();
+            options.ReceiveTimeout = TimeSpan.FromMinutes(2);
+            options.SetExceptionHandler((eventargs) => {
+                Console.WriteLine(eventargs.Exception.Message);
+            });
+
+            eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
         }
 
-        private async Task StopEventProcessor(EventProcessorHost eventProcessorHost)
+        private void StopEventProcessor(EventProcessorHost eventProcessorHost)
         {
-            await eventProcessorHost.UnregisterEventProcessorAsync();
+            eventProcessorHost.UnregisterEventProcessorAsync().Wait();
         }
         
         
-        public async Task Start()
+        public void Start()
         {
-            await StartEventProcessor(_eventProcessorHost);
+            StartEventProcessor(_eventProcessorHost);
         }
 
-        public async Task Stop()
+        public void Stop()
         {
-            await StopEventProcessor(_eventProcessorHost);
+            StopEventProcessor(_eventProcessorHost);
         }
         
     }

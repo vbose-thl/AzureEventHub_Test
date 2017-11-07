@@ -29,6 +29,8 @@ namespace AzureEventHubTest.Consumer.EventProcessor
 
         public Task ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
         {
+            Console.WriteLine("Processing messages ......");
+            
             foreach (var eventData in messages)
             {
                 var data = Encoding.UTF8.GetString(eventData.Body.Array, eventData.Body.Offset, eventData.Body.Count);

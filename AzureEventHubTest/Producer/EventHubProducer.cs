@@ -16,7 +16,7 @@ namespace AzureEventHubTest.Producer
 
         public EventHubProducer()
         {
-            EhConnectionString = ConfigHelper.Configuration["EhConnectionString"];
+            EhConnectionString = ConfigHelper.Configuration["Eh_Send_ConnectionString"];
             EhEntityPath = ConfigHelper.Configuration["EhEntityPath"];
             _eventHubClient = CreateEventHubClient();
         }
