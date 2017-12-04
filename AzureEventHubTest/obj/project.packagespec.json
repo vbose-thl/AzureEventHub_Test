@@ -20,7 +20,7 @@
       "dependencies": {
         "Microsoft.NETCore.App": {
           "target": "Package",
-          "version": "2.0.0"
+          "version": "2.0"
         },
         "Microsoft.Azure.EventHubs": {
           "target": "Package",
@@ -33,6 +33,10 @@
         "Microsoft.Extensions.Configuration.Json": {
           "target": "Package",
           "version": "2.0.0"
+        },
+        "WindowsAzure.ServiceBus": {
+          "target": "Package",
+          "version": "4.1.6"
         }
       },
       "imports": [

@@ -9,6 +9,7 @@
         <e p="Consumer" t="Include">
           <e p="EventHubConsumer.cs" t="Include" />
           <e p="EventProcessor" t="Include">
+            <e p="EventProcessorFactory.cs" t="Include" />
             <e p="SimpleEventProcessor.cs" t="Include" />
           </e>
         </e>

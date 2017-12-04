@@ -1085,6 +1085,15 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "WindowsAzure.ServiceBus/4.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.ServiceBus.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.ServiceBus.dll": {}
+        }
+      },
       "WindowsAzure.Storage/8.1.1": {
         "type": "package",
         "dependencies": {
@@ -2424,6 +2433,15 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "WindowsAzure.ServiceBus/4.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.ServiceBus.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.ServiceBus.dll": {}
         }
       },
       "WindowsAzure.Storage/8.1.1": {
@@ -4015,6 +4033,15 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "WindowsAzure.ServiceBus/4.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.ServiceBus.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.ServiceBus.dll": {}
+        }
+      },
       "WindowsAzure.Storage/8.1.1": {
         "type": "package",
         "dependencies": {
@@ -5602,6 +5629,15 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "WindowsAzure.ServiceBus/4.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.ServiceBus.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.ServiceBus.dll": {}
         }
       },
       "WindowsAzure.Storage/8.1.1": {
@@ -9762,6 +9798,19 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
+    "WindowsAzure.ServiceBus/4.1.6": {
+      "sha512": "80wU+WRickWmrUvJv2vSRCxZWAQECHZtRUWcbQZ01pKzsgWHqT30PgD+Ccln5xWzFrUQ+sZiBphskLJFpD6c5w==",
+      "type": "package",
+      "path": "windowsazure.servicebus/4.1.6",
+      "files": [
+        "content/app.config.install.xdt",
+        "content/web.config.install.xdt",
+        "lib/net45/Microsoft.ServiceBus.dll",
+        "lib/net45/Microsoft.ServiceBus.xml",
+        "windowsazure.servicebus.4.1.6.nupkg.sha512",
+        "windowsazure.servicebus.nuspec"
+      ]
+    },
     "WindowsAzure.Storage/8.1.1": {
       "sha512": "wzGCikAHcxXayzbxrXrbq/eRqxHAV3pT0McJO8SWHEuM4dJRIbg20LDGW4LTs43WPtLbods6+Tp+ECa10DeVJQ==",
       "type": "package",
@@ -9790,7 +9839,8 @@
       "Microsoft.Azure.EventHubs >= 1.0.3",
       "Microsoft.Azure.EventHubs.Processor >= 1.0.3",
       "Microsoft.Extensions.Configuration.Json >= 2.0.0",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "WindowsAzure.ServiceBus >= 4.1.6"
     ]
   },
   "packageFolders": {
@@ -9825,7 +9875,7 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "2.0"
           },
           "Microsoft.Azure.EventHubs": {
             "target": "Package",
@@ -9838,6 +9888,10 @@
           "Microsoft.Extensions.Configuration.Json": {
             "target": "Package",
             "version": "2.0.0"
+          },
+          "WindowsAzure.ServiceBus": {
+            "target": "Package",
+            "version": "4.1.6"
           }
         },
         "imports": [
@@ -9858,5 +9912,17 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'WindowsAzure.ServiceBus 4.1.6' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "WindowsAzure.ServiceBus",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
 }

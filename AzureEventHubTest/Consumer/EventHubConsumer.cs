@@ -31,7 +31,7 @@ namespace AzureEventHubTest.Consumer
 
         public EventProcessorHost CreateEventProcessor()
         {
-            var eventProcessorHost = new EventProcessorHost(
+            var eventProcessorHost = new EventProcessorHost("Testhost1",
                 EhEntityPath,
                 PartitionReceiver.DefaultConsumerGroupName,
                 EhConnectionString,
@@ -48,8 +48,11 @@ namespace AzureEventHubTest.Consumer
             options.SetExceptionHandler((eventargs) => {
                 Console.WriteLine(eventargs.Exception.Message);
             });
-
-            eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
+            options.MaxBatchSize = 1;
+            
+            options.InitialOffsetProvider = (partitionId) => "-1";
+            eventProcessorHost.RegisterEventProcessorFactoryAsync(new EventProcessorFactory(), options).Wait();
+            //eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
         }
 
         private void StopEventProcessor(EventProcessorHost eventProcessorHost)
