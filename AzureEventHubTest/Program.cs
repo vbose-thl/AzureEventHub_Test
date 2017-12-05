@@ -38,6 +38,27 @@ namespace AzureEventHubTest
                 producer.ShutdownSender();
 
                 Console.ReadLine();
+                
+                //Uncomment the line below to test reading the sent messages
+                
+//                Console.WriteLine("Press any key to receive message ..");
+//
+//                Console.Read();
+//
+//                var consumer = new EventHubConsumer();
+//
+//                Console.WriteLine("Starting Consumer");
+//
+//                consumer.Start();
+//
+//                Console.ReadLine();
+//
+//                Console.WriteLine("Stopping Consumer");
+//
+//                consumer.Stop();
+
+                Console.Read();
+
                 Console.Clear();
             }
             catch (Exception e)
