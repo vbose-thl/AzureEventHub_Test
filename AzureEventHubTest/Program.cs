@@ -29,7 +29,8 @@ namespace AzureEventHubTest
                 foreach (var message in _messages)
                 {
                     var messageJson = JsonConvert.SerializeObject(message);
-                    producer.SendMessage("\"" + HttpUtility.JavaScriptStringEncode(messageJson) + "\"").Wait();
+                    var json = "[" + HttpUtility.JavaScriptStringEncode(messageJson) + "]";
+                    producer.SendMessage(messageJson).Wait();
                 }
 
                 Console.WriteLine("Stopping Producer");
