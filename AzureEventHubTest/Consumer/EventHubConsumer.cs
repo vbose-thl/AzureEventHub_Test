@@ -48,7 +48,8 @@ namespace AzureEventHubTest.Consumer
             options.SetExceptionHandler((eventargs) => {
                 Console.WriteLine(eventargs.Exception.Message);
             });
-            options.MaxBatchSize = 1;
+            options.MaxBatchSize = 100;
+            options.PrefetchCount = 100;
             
             options.InitialOffsetProvider = (partitionId) => "-1";
             eventProcessorHost.RegisterEventProcessorFactoryAsync(new EventProcessorFactory(), options).Wait();

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Web;
 using AzureEventHubTest.Consumer;
 using AzureEventHubTest.Producer;
 using Newtonsoft.Json;
@@ -10,14 +13,13 @@ namespace AzureEventHubTest
     class Program
     {
         private static IList<TelemetricMessage> _messages = new List<TelemetricMessage>();
-        
+
         static void Main(string[] args)
         {
             SetupTestMessages();
-            
+
             try
             {
-
                 Console.WriteLine("Starting Producer");
 
                 var producer = new EventHubProducer();
@@ -27,34 +29,12 @@ namespace AzureEventHubTest
                 foreach (var message in _messages)
                 {
                     var messageJson = JsonConvert.SerializeObject(message);
-                    producer.SendMessage(messageJson).GetAwaiter().GetResult();
-
+                    producer.SendMessage("\"" + HttpUtility.JavaScriptStringEncode(messageJson) + "\"").Wait();
                 }
 
                 Console.WriteLine("Stopping Producer");
 
                 producer.ShutdownSender();
-
-//                Console.WriteLine("Press any key to receive message ..");
-//
-//                Console.ReadLine();
-//                Console.Read();
-//
-//                var consumer = new EventHubConsumer();
-//
-//                Console.WriteLine("Starting Consumer");
-//
-//                consumer.Start();
-//
-
-                Console.WriteLine("Press any key to stop receiving message ..");
-                
-                Console.ReadLine();
-                Console.Read();
-
-                Console.WriteLine("Stopping Consumer");
-                
-                //consumer.Stop();
 
                 Console.ReadLine();
                 Console.Clear();
@@ -63,22 +43,21 @@ namespace AzureEventHubTest
             {
                 Console.WriteLine($"Exception {e.StackTrace}");
             }
-
         }
 
         private static void SetupTestMessages()
         {
             _messages.Add(new TelemetricMessage()
             {
-                Vehicle = "TestVehicle123",
+                Vehicle = "TestVehicle33223",
                 DeviceId = "1234",
-                EventId = "1234567",
+                EventId = "1234555",
                 EventType = "Provisioning",
                 EventTime = DateTimeOffset.Parse("2017-11-15T13:22:16Z"),
                 Speed = "90 km/h",
                 Address = "56-58 Esplanade Inner Kaiti Gisborne",
-                Latitude = "-38.67038",
-                Longitude =  "178.03108",
+                Latitude = "-38.757038",
+                Longitude = "168.03108",
                 Odometer = "208330.0 km",
                 Company = "MighWay",
             });
