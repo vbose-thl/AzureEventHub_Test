@@ -72,15 +72,16 @@ namespace AzureEventHubTest
             _messages.Add(new TelemetricMessage()
             {
                 Vehicle = "TestVehicle33223",
-                DeviceId = "1234",
-                EventId = "1234555",
-                EventType = "Provisioning",
-                EventTime = DateTimeOffset.Parse("2017-11-15T13:22:16Z"),
+                DeviceId = "12347",
+                EventId = "1234955",
+                EventType = "IgnitionOn",
+                EventTime = DateTimeOffset.Parse("2017-11-17T14:22:16Z"),
                 Speed = "90 km/h",
                 Address = "56-58 Esplanade Inner Kaiti Gisborne",
                 Latitude = "-38.757038",
                 Longitude = "168.03108",
                 Odometer = "208330.0 km",
+                DeviceType = "V200",
                 Company = "MighWay",
             });
         }
@@ -107,6 +108,8 @@ namespace AzureEventHubTest
         public string Longitude { get; set; }
 
         public string Odometer { get; set; }
+
+        public string DeviceType { get; set; }
 
         public string Company { get; set; }
     }
